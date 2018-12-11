@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+int main(){
+    int c=12;
+    double b;
+    b = c;
+    printf("b = %d\n", b);
+    return 0;
+}
