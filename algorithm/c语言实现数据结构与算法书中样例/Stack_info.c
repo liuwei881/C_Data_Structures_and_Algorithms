@@ -41,3 +41,42 @@ void DisposeStack(Stack S){
 int IsEmpty(Stack S){
     return S->TopOfStack == EmptyTOS;
 }
+
+void MakeEmpty(Stack S){
+    S->TopOfStack = EmptyTOS;
+}
+
+void Push(ElementType X, Stack S){
+    if (IsFull(s)){
+        Error("Full stack");
+    }
+    else{
+        S->Array[++S->TopOfStack] = X;
+    }
+}
+
+ElementType Top(Stack S){
+    if(!IsEmpty(S)){
+        return S->Array[S->TopOfStack];
+    }
+    Error("Empty stack");
+    return 0;
+}
+
+void Pop(Stack S){
+    if (IsEmpty(S)){
+        Error("Empty stack");
+    }
+    else{
+        S->TopOfStack--;
+    }
+}
+
+ElementType TopAndPop(Stack S){
+    if (!IsEmpty(S)){
+        return S->Array[S->TopOfStack--];
+    }
+    Error("Empty stack");
+    return 0;
+}
+
