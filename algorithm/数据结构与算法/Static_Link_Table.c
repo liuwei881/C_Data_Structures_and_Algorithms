@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define maxSize 10
+
 typedef struct{
     int data; //数据域
     int cur; //游标
