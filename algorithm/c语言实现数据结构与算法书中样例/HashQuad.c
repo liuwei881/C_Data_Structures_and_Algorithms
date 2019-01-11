@@ -53,5 +53,32 @@ HashTable InitializeTable(int TableSize){
         H->TheCells[i].Info = Empty;
     }
     return H;
+}
+
+Position Find(ElementType Key, HashTable H){
+    Position CurrentPos;
+    int CollisionNum;
+
+    CollisionNum = 0;
+    CurrentPos = Hash(Key, H->TableSize);
+
+    while(H->TheCells[CurrentPos].Info != Empty &&
+            H->TheCells[CurrentPos].Element != Key){
+        CurrentPos += 2 * ++CollisionNum - 1;
+        if(CurrentPos >= H->TableSize){
+            CurrentPos -= H->TableSize;
+        }
+    }
+    return CurrentPos;
+}
+
+void Insert(ElementType Key, HashTable H){
+    Position Pos;
+
+    Pos = Find(Key, H);
+    if(H->TheCells[Pos].Info != Legitimate){
+        H->TheCells[Pos].Info = Legitimate;
+        H->TheCells[Pos].Element = Key;
+    }
 
 }
